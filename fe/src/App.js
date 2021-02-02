@@ -1,14 +1,10 @@
-//import logo from './logo.svg';
 import React from "react";
-//import ReactDOM from 'react-dom';
-//import CircularProgress from '@material-ui/core/CircularProgress';
 import "./App.css";
 import * as THREE from "three";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Header from './components/Header'
+import Container from '@material-ui/core/Container';
 
-function Home() {
-  return <h2>Home</h2>;
-}
 
 function About() {
   return <h2>About</h2>;
@@ -48,6 +44,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Container>
         <Router>
           <div>
             <Link to="/">Home</Link>
@@ -61,11 +58,12 @@ class App extends React.Component {
                 <Users />
               </Route>
               <Route path="/">
-                <Home />
+                <Header />
               </Route>
             </Switch>
           </div>
         </Router>
+        </Container>
       </div>
     );
   }
