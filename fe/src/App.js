@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import * as THREE from "three";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Header from './components/Header'
+import Start from './components/Start'
 import Container from '@material-ui/core/Container';
 
 
@@ -42,8 +42,7 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className="App">
+    return (<React.Fragment>
         <Container>
         <Router>
           <div>
@@ -58,13 +57,14 @@ class App extends React.Component {
                 <Users />
               </Route>
               <Route path="/">
-                <Header />
+                <Start />
               </Route>
             </Switch>
           </div>
         </Router>
         </Container>
-      </div>
+        </React.Fragment>
+      
     );
   }
 }
