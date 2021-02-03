@@ -2,9 +2,8 @@ import React from "react";
 import "./App.css";
 import * as THREE from "three";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Start from './components/Start'
-import Container from '@material-ui/core/Container';
-
+import StartPage from "./components/StartPage";
+import Container from "@material-ui/core/Container";
 
 function About() {
   return <h2>About</h2>;
@@ -33,7 +32,6 @@ class App extends React.Component {
     scene.add(cube);
     console.log(scene);
   }
-
   componentDidUpdate() {
     console.log("componentDidUpdate");
     this.setState({
@@ -42,29 +40,29 @@ class App extends React.Component {
   }
 
   render() {
-    return (<React.Fragment>
+    return (
+      <React.Fragment>
         <Container>
-        <Router>
-          <div>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/users">Users</Link>
-            <Switch>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/users">
-                <Users />
-              </Route>
-              <Route path="/">
-                <Start />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
+          <Router>
+            <div>
+              <Link to="/">Home</Link>
+              <Link to="/about">About</Link>
+              <Link to="/users">Users</Link>
+              <Switch>
+                <Route path="/about">
+                  <About />
+                </Route>
+                <Route path="/users">
+                  <Users />
+                </Route>
+                <Route path="/">
+                  <StartPage aSceneStatus={this.aSceneLoaded} />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
         </Container>
-        </React.Fragment>
-      
+      </React.Fragment>
     );
   }
 }
