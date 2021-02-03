@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     backgroundColor: "white",
     left: 0,
     top: 0,
-    display: "none",
+    display: "block",
   },
   buzz_arvr: {
     position: "absolute",
@@ -20,6 +20,16 @@ const useStyles = makeStyles({
     top: "30vh",
     width: "80vw",
     height: "auto",
+    animation: "$my-animation 1s infinite",
+    backgroundColor: "red"
+  },
+  "@keyframes my-animation": {
+    "25%": {
+      backgroundColor: ({ customColor }) => customColor
+    },
+    to: {
+      backgroundColor: "blue"
+    }
   },
   powered_by_Buzz: {
     position: "absolute",
@@ -36,7 +46,16 @@ const useStyles = makeStyles({
 });
 
 export default function StartPage(props) {
-  const classes = useStyles();
+  const [count, setCount] = React.useState(true);
+  React.useEffect(() => {
+    console.log("Hello");
+    var scene = document.querySelector("a-scene").renderStarted;
+    console.log(scene);
+    scene ? setCount(false) : setCount(true)
+    document.querySelector('a-scene').addEventListener('loaded', () => console.log("loaded"));
+  }, []);
+
+  const classes = useStyles({ customColor: "black" });
   console.log(props.aSceneStatus);
   return (
     <div className={classes.container}>
@@ -50,7 +69,7 @@ export default function StartPage(props) {
         alt={"Powered by buzz"}
         className={classes.powered_by_Buzz}
       />
-      {props.aSceneStatus ? <CircularProgress className={classes.circularProgress}/> : null }
+      {count ? <CircularProgress className={classes.circularProgress} /> : null}
     </div>
   );
 }

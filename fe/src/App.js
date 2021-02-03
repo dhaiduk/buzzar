@@ -3,11 +3,9 @@ import "./App.css";
 import * as THREE from "three";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import StartPage from "./components/StartPage";
+import ARPage from "./components/ARPage";
 import Container from "@material-ui/core/Container";
 
-function About() {
-  return <h2>About</h2>;
-}
 
 function Users() {
   return <h2>Users</h2>;
@@ -50,7 +48,7 @@ class App extends React.Component {
               <Link to="/users">Users</Link>
               <Switch>
                 <Route path="/about">
-                  <About />
+                  <ARPage name="Shiori" />
                 </Route>
                 <Route path="/users">
                   <Users />
