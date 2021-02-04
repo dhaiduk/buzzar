@@ -45,12 +45,12 @@ class App extends React.Component {
             <div>
               <Link to="/">Home</Link>
               <Link to="/about">About</Link>
-              <Link to="/users">Users</Link>
+              <Link to="/ar">Users</Link>
               <Switch>
                 <Route path="/about">
                   <ARPage name="Shiori" />
                 </Route>
-                <Route path="/users">
+                <Route path="/ar">
                   <Users />
                 </Route>
                 <Route path="/">

@@ -3,32 +3,35 @@ import PoweredByBuzz from "../images/powered_by_buzz.png";
 import BuzzARVR from "../images/buzz_arvr.png";
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   container: {
     position: "absolute",
     height: "100%",
     width: "100%",
-    backgroundColor: "white",
+    backgroundColor: "orange",
     left: 0,
     top: 0,
     display: "block",
   },
   buzz_arvr: {
     position: "absolute",
-    left: "10vw",
-    top: "30vh",
-    width: "80vw",
+    left: "33vw",
+    top: "40vh",
+    width: "33vw",
     height: "auto",
     animation: "$my-animation 1s infinite",
-    backgroundColor: "red"
   },
   "@keyframes my-animation": {
-    "25%": {
-      backgroundColor: ({ customColor }) => customColor
+    "0%": {
+      transform: "scale(1, 1)"
     },
-    to: {
-      backgroundColor: "blue"
+    "80%": {
+      transform: "scale(1.1, 1.1)"
+    },
+    "100%": {
+      transform: "scale(1, 1)"
     }
   },
   powered_by_Buzz: {
@@ -49,26 +52,33 @@ export default function StartPage(props) {
   const [count, setCount] = React.useState(true);
   React.useEffect(() => {
     console.log("Hello");
-    var scene = document.querySelector("a-scene").renderStarted;
+    var scene = document.querySelector("a-scene");
     console.log(scene);
-    scene ? setCount(false) : setCount(true)
+    if (scene.hasLoaded) {
+      setCount(false);
+    } else {
+      scene.addEventListener('loaded', () => setCount(false));
+    }
     document.querySelector('a-scene').addEventListener('loaded', () => console.log("loaded"));
   }, []);
 
-  const classes = useStyles({ customColor: "black" });
+  const classes = useStyles();
   console.log(props.aSceneStatus);
+
   return (
     <div className={classes.container}>
-      <img
+      <Link to="/ar"><img
         src={BuzzARVR}
         alt={"Buzz ARVR logo"}
         className={classes.buzz_arvr}
       />
+      </Link>
       <img
         src={PoweredByBuzz}
         alt={"Powered by buzz"}
         className={classes.powered_by_Buzz}
       />
+
       {count ? <CircularProgress className={classes.circularProgress} /> : null}
     </div>
   );
