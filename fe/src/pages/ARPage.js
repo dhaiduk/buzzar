@@ -1,12 +1,9 @@
 import React from "react";
-
-const FunctionalComponent = (props) => {
+import CustomizedMenus  from "../components/arMenu"
+const ARPage = (props) => {
   const [count, setCount] = React.useState(0);
   React.useEffect(() => {
     console.log("Hello");
-    var scene = document.querySelector("a-scene").renderStarted;
-    console.log(scene);
-    document.querySelector('a-scene').addEventListener('loaded', ()=>console.log("loaded"));
   }, []);
   React.useEffect(() => {
     return () => {
@@ -14,13 +11,15 @@ const FunctionalComponent = (props) => {
     };
   }, []);
   return <div>
-    <h1>Hello,  {props.name}</h1>
+    <CustomizedMenus/>
+    {/*<h1>Hello,  {props.name}</h1>
     <div>
       <p>count: {count}</p>
       <button onClick={() => setCount(count + 1)}>Click</button>
-    </div>
+      Are you want to make a gift AR?
+</div>*/}
   </div>;
 };
 
 
-export default FunctionalComponent;
+export default ARPage;

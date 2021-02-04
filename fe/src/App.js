@@ -2,14 +2,10 @@ import React from "react";
 import "./App.css";
 import * as THREE from "three";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import StartPage from "./components/StartPage";
-import ARPage from "./components/ARPage";
+import StartPage from "./pages/StartPage";
+import ARPage from "./pages/ARPage";
 import Container from "@material-ui/core/Container";
 
-
-function Users() {
-  return <h2>Users</h2>;
-}
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -43,18 +39,14 @@ class App extends React.Component {
         <Container>
           <Router>
             <div>
-              <Link to="/">Home</Link>
-              <Link to="/about">About</Link>
-              <Link to="/ar">Users</Link>
+              {/*<Link to="/">Start</Link>
+              <Link to="/ar">AR</Link>*/}
               <Switch>
-                <Route path="/about">
-                  <ARPage name="Shiori" />
-                </Route>
                 <Route path="/ar">
-                  <Users />
+                  <ARPage name ="John"/>
                 </Route>
                 <Route path="/">
-                  <StartPage aSceneStatus={this.aSceneLoaded} />
+                  <StartPage />
                 </Route>
               </Switch>
             </div>
