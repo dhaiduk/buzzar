@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import * as THREE from "three";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import StartPage from "./pages/StartPage";
 import ARPage from "./pages/ARPage";
 import Container from "@material-ui/core/Container";
@@ -23,7 +23,7 @@ class App extends React.Component {
     var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     var cube = new THREE.Mesh(geometry, material);
     cube.position.set(0, 0.2, 0.1);
-    scene.add(cube);
+    //scene.add(cube);
     console.log(scene);
   }
   componentDidUpdate() {

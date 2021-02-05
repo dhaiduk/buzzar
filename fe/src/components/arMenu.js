@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -8,6 +8,15 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
+
+
+const useStyles = makeStyles({
+   circularProgress: {
+    position: "absolute",
+    left: "3%",
+    top: "3%",
+  },
+});
 
 const StyledMenu = withStyles({
   paper: {
@@ -40,6 +49,7 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem);
 
+
 export default function CustomizedMenus() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -50,9 +60,9 @@ export default function CustomizedMenus() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const classes = useStyles();
   return (
-    <div>
+    <div className={classes.circularProgress}>
       <Button
         aria-controls="customized-menu"
         aria-haspopup="true"
